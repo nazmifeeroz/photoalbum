@@ -1,0 +1,39 @@
+
+		
+		<nav class="navbar navbar-expand-lg navbar-dark bg-default scrolling-navbar">
+        <a class="navbar-brand" href="#"><strong>PhotoApp</strong></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
+                    <%= link_to 'Home', root_path, class: "nav-link" %>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+
+			<% if model_signed_in? %>
+			  .
+			  <li class="nav-item">
+                    <a class="nav-link"><%= link_to 'Edit profile', edit_model_registration_path %> </a>
+                </li>
+                <li class="nav-item" style="margin-left: 15px;">
+                    <a class="nav-link"><%= link_to "Logout", destroy_model_session_path, method: :delete %></a>
+                </li>
+			<% else %>
+			<li class="nav-item">
+                    <a class="nav-link"><%= link_to "Sign up", new_model_registration_path %> </a>
+                </li>
+			  <li class="nav-item" style="margin-left: 15px;">
+                    <a class="nav-link"> <%= link_to "Login", new_model_session_path %></a>
+                </li>
+			  
+			<% end %>
+            </ul>
+        </div>
+    </nav>
+
+</header>
+<!--Main Navigation-->

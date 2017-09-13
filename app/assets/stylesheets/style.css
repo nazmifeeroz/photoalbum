@@ -1,6 +1,9 @@
-.loginBox {
-	background-color: #aaaaaa;
-	padding: 0;
-	
+.wrapper {
+	margin-top: 20px;
+}
 
+.page-footer {
+	position: relative;
+	bottom: 0;
+	width: 100%;
 }
