@@ -8,7 +8,7 @@ class PhotosController < ApplicationController
 	def create
 
 		@album_id = Album.find(params[:album_id])
-		photo_params = params.require(:photo).permit(:photo_name, :date, :description)
+		photo_params = params.require(:photo).permit(:photoname, :date, :description)
 		photo = Photo.new(photo_params)
 		photo.album_id = @album_id.id
 		# byebug

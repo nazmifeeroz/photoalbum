@@ -8,10 +8,18 @@
 <div class="card">
     <!--Card image-->
     <div class="view overlay hm-white-slight">
-        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2821%29.jpg" class="img-fluid" alt="">
-        <a>
-            <div class="mask"></div>
-        </a>
+        <div class="row" style="padding: 5px;">
+        	<% photoshow = Photo.where(album_id:album.id) %>
+        	<% photoshow.each do |show| %>
+
+        	<div class="col-md-3" style="margin-top: 5px;">
+		        
+		        <a data-toggle="tooltip" data-placement="top" title="<%= show.photoname %>">
+				  <img src="https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2821%29.jpg" class="img-responsive img-thumbnail" alt="">
+				</a>
+        	</div>
+        	<% end %>
+        </div>
     </div>
     <!--/.Card image-->
     <!--Card content-->
