@@ -1,5 +1,5 @@
 class Photo < ApplicationRecord
 
-	belongs_to :model
+	belongs_to :album
 
 end

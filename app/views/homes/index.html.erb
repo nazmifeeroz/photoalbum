@@ -1,7 +1,8 @@
-<% if model_signed_in? %>
+<% if user_signed_in? %>
 <div class="container">
 		<div class="row">
 	<% @albums.each do |album| %>
+
 		<div class="col-md-4">
 <!--Card Dark-->
 <div class="card">
@@ -18,14 +19,14 @@
         <!--Social shares button-->
         <a class="activator"><i class="fa fa-share-alt white-text"></i></a>
         <!--Title-->
-        <h4 class="card-title"><%= album.album_name %></h4>
+        <h4 class="card-title"><%= album.albumname %></h4>
         <hr>
         <!--Text-->
-        <p class="card-text"><%= album.Description %></p>
-        <a href="#" class="d-flex">
-            <h5 class="waves-effect waves-light p-2">Open <i class="fa fa-chevron-right"></i></h5>
-            <%= link_to 'delete', photo_album_path(id: album.id), method: :delete, class: "waves-effect waves-light p-2" %>
-        </a>
+        <p class="card-text"><%= album.description %></p>
+        <div style="display: inline;">
+	        <%= link_to '', album_path(id: album.id), method: :delete, class: "waves-effect waves-light p-2 btn btn-danger pull-right fa fa-trash" %>
+        	<%= link_to 'Add Photo', new_album_photo_path(album_id: album.id), class:"btn btn-info btn-sm pull-right fa fa-plus" %>
+        </div>
     </div>
     <!--/.Card content-->
 </div>
@@ -38,12 +39,12 @@
 	<div class="col-6 col-md-3"></div>
 	<div class="col-md-6">
 		<h1>Create Photo Album</h1>
-		<%= form_for @photo_album, url: photo_albums_path, method: :post do |f| %>
+		<%= form_for @album, url: albums_path, method: :post do |f| %>
 		
 			<%= f.label 'Album Name' %>
-			<%= f.text_field :album_name, class: 'form_control', :required => true %>
+			<%= f.text_field :albumname, class: 'form_control', :required => true %>
 			<%= f.label 'Description' %>
-			<%= f.text_field :Description, class: 'form_control', :required => true %>
+			<%= f.text_field :description, class: 'form_control', :required => true %>
 
 			<%= f.submit "Create Album", class: 'btn btn-primary' %>
 		<% end %>

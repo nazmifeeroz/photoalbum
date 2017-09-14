@@ -12,17 +12,36 @@
 
 ActiveRecord::Schema.define(version: 20170912081942) do
 
+  create_table "albums", force: :cascade do |t|
+    t.string "albumname"
+    t.string "description"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_albums_on_user_id"
+  end
+
   create_table "comments", force: :cascade do |t|
     t.string "body"
-    t.integer "model_id"
+    t.integer "user_id"
     t.integer "photo_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["model_id"], name: "index_comments_on_model_id"
     t.index ["photo_id"], name: "index_comments_on_photo_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "models", force: :cascade do |t|
+  create_table "photos", force: :cascade do |t|
+    t.string "photoname"
+    t.string "date"
+    t.string "description"
+    t.integer "album_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_photos_on_album_id"
+  end
+
+  create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -35,27 +54,8 @@ ActiveRecord::Schema.define(version: 20170912081942) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_models_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_models_on_reset_password_token", unique: true
-  end
-
-  create_table "photo_albums", force: :cascade do |t|
-    t.string "album_name"
-    t.string "Description"
-    t.integer "model_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["model_id"], name: "index_photo_albums_on_model_id"
-  end
-
-  create_table "photos", force: :cascade do |t|
-    t.string "photo_name"
-    t.string "date"
-    t.string "description"
-    t.integer "album_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["album_id"], name: "index_photos_on_album_id"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

@@ -1,12 +1,12 @@
-class PhotoAlbumsController < ApplicationController
+class AlbumsController < ApplicationController
 
 	def create
 		
-		photo_album_params = params[:photo_album].permit(:album_name, :Description)
-		photoAlbum = Photo_album.new(photo_album_params)
-		photoAlbum.model_id = current_model.id
+		album_params = params[:album].permit(:albumname, :description)
+		album = Album.new(album_params)
+		album.user_id = current_user.id
 		# photoAlbum = current_model.photo_albums.build(photo_album_params)
-		if photoAlbum.save
+		if album.save
 			flash[:success] = "Album Created!"
 		else
 			flash[:danger] = "Album not created!"
@@ -15,7 +15,7 @@ class PhotoAlbumsController < ApplicationController
 	end
 
 	def destroy
-		album = Photo_album.find(params[:id])
+		album = Album.find(params[:id])
 		if album.destroy
 			flash[:success] = "Album Deleted."
 		else

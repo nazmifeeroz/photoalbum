@@ -1,0 +1,15 @@
+<div class="container">
+	<h4 class="modal-title" id="myModalLabel">Add new photo</h4>
+
+	<%= form_for @photo, url: album_photos_path, method: :post do |f| %>
+
+		<%= f.label 'Photo Name' %>
+		<%= f.text_field :photoname, class: 'form_control', :required => true %>
+		<%= f.label 'Date' %>
+		<%= f.text_field :date, class: 'form_control', :required => true %>
+		<%= f.label 'description' %>
+		<%= f.text_field :description, class: 'form_control', :required => true %>
+
+		<%= f.submit "Add Photo", class: 'btn btn-primary' %>
+	<% end %>
+</div>
