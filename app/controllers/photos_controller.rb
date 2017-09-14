@@ -8,7 +8,7 @@ class PhotosController < ApplicationController
 	def create
 
 		@album_id = Album.find(params[:album_id])
-		photo_params = params.require(:photo).permit(:photoname, :date, :description)
+		photo_params = params.require(:photo).permit(:photoname, :date, :description, :image)
 		photo = Photo.new(photo_params)
 		photo.album_id = @album_id.id
 		# byebug
@@ -19,5 +19,9 @@ class PhotosController < ApplicationController
 			flash[:danger] = "New Photo not added."
 		end
 		redirect_to root_path
+	end
+
+	def show
+		@photo = Photo.find(params[:id])
 	end
 end

@@ -5,15 +5,15 @@
     <div class="row">
     <div class="col-6 col-md-4"></div>
       <div class="col-md-4">
-          <h2>Log in</h2>
+          <h2 >Log in</h2><br>
             
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <div class="field">
+            <div class="md-form">
               <%= f.label :email %><br />
               <%= f.email_field :email, autofocus: true, class: "form-control" %>
             </div>
 
-            <div class="field">
+            <div class="md-form">
               <%= f.label :password %><br />
               <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
             </div>

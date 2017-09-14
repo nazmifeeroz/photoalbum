@@ -1,11 +1,13 @@
 <% if user_signed_in? %>
 <div class="container">
 		<div class="row">
+
 	<% @albums.each do |album| %>
 
-		<div class="col-md-4">
+		<div class="col-md-6" style="margin-bottom: 10px;">
 <!--Card Dark-->
-<div class="card">
+
+<div class="card text-center">
     <!--Card image-->
     <div class="view overlay hm-white-slight">
         <div class="row" style="padding: 5px;">
@@ -15,7 +17,9 @@
         	<div class="col-md-3" style="margin-top: 5px;">
 		        
 		        <a data-toggle="tooltip" data-placement="top" title="<%= show.photoname %>">
-				  <img src="https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2821%29.jpg" class="img-responsive img-thumbnail" alt="">
+				  <img src="/uploads/photo/image/19/keepcalm.jpeg" class="img-responsive img-thumbnail" alt="">
+
+
 				</a>
         	</div>
         	<% end %>
@@ -46,15 +50,18 @@
 	<div class="row">
 	<div class="col-6 col-md-3"></div>
 	<div class="col-md-6">
-		<h1>Create Photo Album</h1>
+		<h1>Create Photo Album</h1><br>
 		<%= form_for @album, url: albums_path, method: :post do |f| %>
 		
+			<div class="md-form">
 			<%= f.label 'Album Name' %>
 			<%= f.text_field :albumname, class: 'form_control', :required => true %>
+			</div>
+			<div class="md-form">
 			<%= f.label 'Description' %>
 			<%= f.text_field :description, class: 'form_control', :required => true %>
-
-			<%= f.submit "Create Album", class: 'btn btn-primary' %>
+			</div>
+			<%= f.submit "Create Album", class: 'btn btn-info' %>
 		<% end %>
 		</div>
 	</div>
