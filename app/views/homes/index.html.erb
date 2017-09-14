@@ -15,11 +15,10 @@
         	<% photoshow.each do |show| %>
 
         	<div class="col-md-3" style="margin-top: 5px;">
-		        
 		        <a data-toggle="tooltip" data-placement="top" title="<%= show.photoname %>">
-				  <img src="/uploads/photo/image/19/keepcalm.jpeg" class="img-responsive img-thumbnail" alt="">
-
-
+		        	<%= link_to album_photo_path(album_id:album.id,id:show.id) do %>
+				  <img src="https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2821%29.jpg" class="img-responsive img-thumbnail" alt="">
+				  <% end %>
 				</a>
         	</div>
         	<% end %>
