@@ -15,11 +15,25 @@
         	<% photoshow.each do |show| %>
 
         	<div class="col-md-3" style="margin-top: 5px;">
-		        <a data-toggle="tooltip" data-placement="top" title="<%= show.photoname %>">
-		        	<%= link_to album_photo_path(album_id:album.id,id:show.id) do %>
-				  <img src="https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2821%29.jpg" class="img-responsive img-thumbnail" alt="">
-				  <% end %>
-				</a>
+		        
+				<!--Card-->
+				<%= link_to album_photo_path(album_id:album.id,id:show.id) do %>
+				<div class="card">
+					
+				    <!--Card image-->
+				    <img class="img-fluid" src="<%= show.image %>">
+
+				    <!--Card content-->
+				    <div class="card-body">
+				        <!--Title-->
+				        <h4 class="card-text"><%= show.photoname %></h4>
+				        
+				        
+				    </div>
+						
+				</div>
+				<% end %>
+				<!--/.Card-->
         	</div>
         	<% end %>
         </div>
