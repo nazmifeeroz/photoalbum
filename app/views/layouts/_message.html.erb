@@ -1,7 +1,7 @@
 
 <% if notice %>
 	 
-	<div class="alert alert-success alert-dismissable fade show">
+	<div class="alert alert-success alert-dismissable fade show" style="position: absolute; top: 0; width:100%; z-index: 10;">
 		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		<strong>Notice:</strong> <%= notice %>
 	</div>
@@ -10,7 +10,7 @@
 
 <% elsif alert %>
 
-	<div class="alert alert-danger alert-dismissable fade show">
+	<div class="alert alert-danger alert-dismissable fade show" style="position: absolute; top: 0; width:100%; z-index: 10;">
 		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		<strong>Warning!</strong> <%= alert %>
 	</div>
@@ -18,7 +18,7 @@
 <% else %>
 
 <% flash.each do |name, msg| %>
-	<div class="alert alert-<%= "#{name}" %> alert-dismissable fade show">
+	<div class="alert alert-<%= "#{name}" %> alert-dismissable fade show" style="position: absolute; top: 0; width:100%; z-index: 10;">
 	  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 	  <strong><%= "#{name}" %>!</strong> <%= "#{msg}" %>
 	</div>

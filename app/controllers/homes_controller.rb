@@ -7,7 +7,7 @@ class HomesController < ApplicationController
 			@album = Album.new
 			@photo = Photo.new
 		end
-		
+		@allimage = Photo.all
 	end
 
 	def new
