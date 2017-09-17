@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170914063851) do
+ActiveRecord::Schema.define(version: 20170916114111) do
 
   create_table "albums", force: :cascade do |t|
     t.string "albumname"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20170914063851) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "private"
     t.index ["user_id"], name: "index_albums_on_user_id"
   end
 
@@ -32,9 +33,6 @@ ActiveRecord::Schema.define(version: 20170914063851) do
   end
 
   create_table "photos", force: :cascade do |t|
-    t.string "photoname"
-    t.string "date"
-    t.string "description"
     t.integer "album_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -55,6 +53,7 @@ ActiveRecord::Schema.define(version: 20170914063851) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

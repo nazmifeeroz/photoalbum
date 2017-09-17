@@ -1,5 +1,7 @@
-<% if user_signed_in? %>
 <div class="container wrapper">
+	<div class="welcome"><h1><strong>Welcome <%= @username %>!</h1></strong><br>
+	</div>
+	<br><br>
 		<div class="row">
 
 	<% @albums.each do |album| %>
@@ -22,14 +24,6 @@
 					
 				    <!--Card image-->
 				    <img class="img-fluid" src="<%= show.image %>">
-
-				    <!--Card content-->
-				    <div class="card-body">
-				        <!--Title-->
-				        <h4 class="card-text"><%= show.photoname %></h4>
-				        
-				        
-				    </div>
 						
 				</div>
 				<% end %>
@@ -49,8 +43,18 @@
         <!--Text-->
         <p class="card-text"><%= album.description %></p>
         <div style="display: inline;">
-	        <%= link_to '', album_path(id: album.id), method: :delete, class: "waves-effect waves-light p-2 btn btn-danger pull-right fa fa-trash" %>
-        	<%= link_to 'Add Photo', new_album_photo_path(album_id: album.id), class:"btn btn-info btn-sm pull-right fa fa-plus" %>
+	        
+        	<%= form_for @photo, url: album_photos_path(album_id: album.id), method: :post do |f| %>
+		<%= f.file_field :image, class: 'form_control', required: true %>
+		<br><br>
+		<%= f.submit "Add Photo", class: 'btn btn-info' %>
+	<% end %>
+	<%= link_to '', album_path(id: album.id), method: :delete, class: "waves-effect waves-light p-2 btn btn-danger pull-right fa fa-trash" %>
+	<% if album.private == 0 || album.private == nil %>
+	<%= link_to 'Make Album Public', album_path(id: album.id,private:1), method: :put, class: "waves-effect waves-light p-2 btn btn-success btn-sm pull-right" %>
+	<% else %>
+	<%= link_to 'Make Album Private', album_path(id: album.id,private:0), method: :put, class: "waves-effect waves-light p-2 btn btn-warning btn-sm pull-right" %>
+	<% end %>
         </div>
     </div>
     <!--/.Card content-->
@@ -74,14 +78,10 @@
 			<%= f.label 'Description' %>
 			<%= f.text_field :description, class: 'form_control', :required => true %>
 			</div>
+
 			<%= f.submit "Create Album", class: 'btn btn-info' %>
 		<% end %>
 		</div>
 	</div>
 	</div>
 </div>
-
-
-<% else %>
-  <%= render 'layouts/static' %>
-<% end %>

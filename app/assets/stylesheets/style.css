@@ -35,11 +35,21 @@ html, body {
 
 .wrapper {
 	margin-top: 80px;
-
 	margin-bottom: 100px;
+
+}
+.welcome {
+	margin-top: 80px;
+	text-align: center;
+	
 }
 
 .latest {
+	margin-bottom: 100px;
+}
+
+.showpage {
+	margin-top: 20px;
 	margin-bottom: 100px;
 }
 

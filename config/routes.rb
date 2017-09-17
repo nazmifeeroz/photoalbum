@@ -7,5 +7,5 @@ Rails.application.routes.draw do
 			resources :comments
 		end
 	end
-  root to: "homes#index"
+  root to: "albums#index"
 end

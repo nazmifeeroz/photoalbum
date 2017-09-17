@@ -29,16 +29,16 @@ sr.reveal('.fadein');
   $(document).ready(function(){
     
   // hide .navbar first
-  $(".navbar").hide();
+  $(".navbar2").hide();
   
   // fade in .navbar
   $(function () {
     $(window).scroll(function () {
             // set distance user needs to scroll before we fadeIn navbar
       if ($(this).scrollTop() > 100) {
-        $('.navbar').fadeIn();
+        $('.navbar2').fadeIn();
       } else {
-        $('.navbar').fadeOut();
+        $('.navbar2').fadeOut();
       }
     });
 
@@ -46,5 +46,9 @@ sr.reveal('.fadein');
   });
 
 });
-  }(jQuery));</script>
+  }(jQuery));
+$(".alert").fadeTo(2000, 500).fadeOut(500, function(){
+               $(".alert").fadeOut(500);
+                }); 
+                </script>
 </html>

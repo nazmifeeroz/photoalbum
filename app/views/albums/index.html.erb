@@ -1,0 +1,53 @@
+<% if !user_signed_in? %>
+<div class="cover">
+	<div class="cover-text fadein">
+		<h1>Welcome to our PhotoApp!</h1>
+		<%= link_to 'Sign Up Now!', new_user_registration_path, class: 'btn btn-deep-orange' %> <br>
+		<%= link_to 'Login', new_user_session_path, class: 'btn btn-warning' %>
+	</div>
+</div>
+<% else %>
+	<div class="welcome"><h1><strong>Welcome <%= @username %>!</h1></strong><br>
+		<%= link_to 'View Your Album', album_path(id: @user), method: :get, class: "btn btn-warning" %>
+	</div>
+
+<% end %>
+
+<div class="latest wrapper">
+	<div class="container">
+		<h2 class="text-center"><strong>Latest Addition</strong></h2>
+		<div class="row">
+
+			
+			<% @photos.each do |f| %>
+			<% @allpublic.each do |albumid| %>
+				<% if f.album_id == albumid %>
+				
+
+			<div class="col-md-4 fadein">
+				
+				<div class="view overlay hm-blue-light hm-zoom">
+				<img src="<%= f.image %>" class="img-responsive img-thumbnail z-depth-4" style="margin:2px;">
+				<% if user_signed_in? %>
+				<%= link_to album_photo_path(album_id:albumid,id:f.id) do %>
+				<div class="mask flex-center waves-effect waves-light">
+			        
+			    </div>
+			    <% end %>
+			    <% else %>
+			    
+			    <%= link_to new_user_session_path do %>
+				<div class="mask flex-center waves-effect waves-light">
+			        <% flash[:danger] = "You will need to login first." %>
+			    </div>
+			    <% end %>
+			    <% end %>
+			    </div>
+			</div>
+			
+			<% end %>
+		<% end %>
+		<% end %>
+		</div>
+	</div>
+</div>

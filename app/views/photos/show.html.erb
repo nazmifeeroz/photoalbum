@@ -1,3 +1,38 @@
-<div class="container">
-	<h4><%= @photo.photoname %></h4>
+<div class="showpage">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9">
+				
+				<img class="img-thumbnail z-depth-4" src="<%= @photo.image %>">
+			</div>
+
+			<div class="col-md-3">
+				<p>Uploaded by <%= @useremail %></p>
+				<%= link_to 'Back', album_path(album_id: @album_id), class: "btn btn-default" %>
+				<% if @user == Album.find_by(id:params[:album_id]).user_id %>
+				<%= link_to 'Delete', album_photo_path(album_id: @album_id, id: @id), method: :delete, class: "btn btn-warning" %>
+				<% end %>
+				<br><br><br><br>
+				
+				<% if !Comment.where(photo_id:@id).empty? %>
+					<% @comments.each do |f| %>
+						<p><small><%= User.find_by(id:f.user_id).email %> says -</small> <br> <%= f.body %></p>
+						
+					<% end %>
+					<% else %>
+						<p>No comments.</p>
+				<% end %>
+
+				<br><br>
+				
+				<small>Give a comment:</small>
+				<%= form_for @comment, url: album_photo_comments_path(album_id: @album_id, photo_id: @id ), method: :post do |f| %>
+
+					<%= f.hidden_field :user_id, value: current_user.email %>
+					<%= f.text_area :body, class: 'form_control' %>
+					<%= f.submit 'Add Comment', class: 'btn btn-success btn-sm' %>
+				<% end %>
+			</div>
+		</div>
+	</div>
 </div>
