@@ -2,6 +2,7 @@
 <div class="cover">
 	<div class="cover-text fadein">
 		<h1>Welcome to our PhotoApp!</h1>
+		<p class="lead">A portal to your memories</p>
 		<%= link_to 'Sign Up Now!', new_user_registration_path, class: 'btn btn-deep-orange' %> <br>
 		<%= link_to 'Login', new_user_session_path, class: 'btn btn-warning' %>
 	</div>
@@ -16,7 +17,7 @@
 <div class="latest wrapper">
 	<div class="container">
 		<h2 class="text-center"><strong>Latest Addition</strong></h2>
-		<div class="row">
+		<div class="grid">
 
 			
 			<% @photos.each do |f| %>
@@ -24,7 +25,7 @@
 				<% if f.album_id == albumid %>
 				
 
-			<div class="col-md-4 fadein">
+			<div class="grid-item fadein">
 				
 				<div class="view overlay hm-blue-light hm-zoom">
 				<img src="<%= f.image %>" class="img-responsive img-thumbnail z-depth-4" style="margin:2px;">
