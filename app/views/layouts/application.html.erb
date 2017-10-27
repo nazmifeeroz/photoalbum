@@ -5,18 +5,18 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.2/css/mdb.min.css">
   </head>
 
   <body>
-		<%= render 'layouts/nav' %>
-		<%= render 'layouts/message' %>
-			
-		    <%= yield %>
+    <%= render 'layouts/nav' %>
+    <%= render 'layouts/message' %>
+      
+        <%= yield %>
 
-	<%= render 'layouts/footer' %>
-	<%= render 'layouts/modal' %>
+  <%= render 'layouts/footer' %>
+  <%= render 'layouts/modal' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.10.1/umd/popper.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.2/js/mdb.min.js"></script>
