@@ -17,7 +17,7 @@
 <div class="latest wrapper">
 	<div class="container">
 		<h2 class="text-center"><strong>Latest Addition</strong></h2>
-		<div class="grid">
+		<div class="row">
 
 			
 			<% @photos.each do |f| %>
@@ -25,7 +25,7 @@
 				<% if f.album_id == albumid %>
 				
 
-			<div class="grid-item fadein">
+			<div class="col-md-4 fadein">
 				
 				<div class="view overlay hm-blue-light hm-zoom">
 				<img src="<%= f.image %>" class="img-responsive img-thumbnail z-depth-4" style="margin:2px;">
